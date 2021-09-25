@@ -5,7 +5,7 @@
 }
 
 .App{
-  background-color: rgb(238, 252, 247);
+  background-color: #EEF4F8;
 }
 
 .app_body{
@@ -18,5 +18,14 @@
 
 .body_conent{
   width: 62%;
+  padding: 10px 20px;
   /* background-color: brown; */
+}
+
+.pageHead{
+  font-family: spartan;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 15px;
+  border-bottom: 5px solid blue;
 }
