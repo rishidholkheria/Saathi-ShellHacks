@@ -4,24 +4,66 @@
 }
 
 .addNewLocation{
-    width: 90%;
+    width: 100%;
     background-color: white;
     margin: 30px 0;
     padding: 15px;
     border-radius: 10px;
     color: rgba(0, 0, 0, 0.514);
-    display: flex;
-    align-items: center;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.addNewLocation p{
-    width: 95%;
+.ciInputWrapper{
+    width: 100%;
+    display: flex;
 }
 
-.fa-plus-square{
-    color: blue;
+.ciInputWrapper div{
+    width: 90%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.ciInputWrapper input{
+    width: 100%;
+    padding: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.719);
+}
+
+.ciInputWrapper textarea{
+    width: 100%;
+    min-height: 50px;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.addNewLocation p{
+    width: 100%;
+}
+
+.postLocationBtn{
+    width: 50%;
+    float: right;
+    margin-top: 10px;
+    padding: 7px;
+    background-color: #9d7cff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.postLocationBtn:hover{
+    width: 50%;
+    float: right;
+    margin-top: 10px;
+    padding: 7px;
+    background-color: #5a27f3;
+    color: white ;
+}
+
 
 .singleLocationDetails{
     width: 80%;

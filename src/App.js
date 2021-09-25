@@ -8,9 +8,12 @@ import Navbar from './components/Navbar';
 import Volunteer from './pages/VolCleanIndia/VolCleanIndia';
 import Sidebar from './components/Sidebar';
 import ProfileSide from './components/ProfileSide';
+import { ToastProvider, useToasts } from 'react-toast-notifications';
+
 
 function App() {
   return (
+    <ToastProvider>
     <Router>
       <Switch>
         <div className="App">
@@ -25,6 +28,7 @@ function App() {
         </div>
       </Switch>
     </Router>
+    </ToastProvider>
   );
 }
 
