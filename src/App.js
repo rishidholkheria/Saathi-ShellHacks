@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Navbar from './components/Navbar';
+import Volunteer from './pages/VolCleanIndia/VolCleanIndia';
+import Sidebar from './components/Sidebar';
+import ProfileSide from './components/ProfileSide';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <div className="App">
+          <Navbar/>
+          <div className="app_body">
+            <Sidebar/>
+            <div className="body_conent">
+              <Route path="/clean-india" exact={true} component={Volunteer}></Route>
+            </div>
+              <ProfileSide/>
+          </div>
+        </div>
+      </Switch>
+    </Router>
   );
 }
 

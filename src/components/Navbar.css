@@ -1,0 +1,17 @@
+.navbar{
+    width: 100%;
+    overflow: hidden;
+    padding: 5px 15px;
+    top: 0;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.navLogo{
+    /* width: 10%; */
+    /* height: 100%; */
+    font-family: damion;
+    font-size: 40px;
+    /* text-align: center; */
+    /* border: 2px solid red; */
+}
