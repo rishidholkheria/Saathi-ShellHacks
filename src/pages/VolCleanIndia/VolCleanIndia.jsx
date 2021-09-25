@@ -37,7 +37,7 @@ const Volunteer = () => {
         setCiDesc("")
         setCiTitle("")
         setCiCity("")
-        se("")
+        setCiImage("")
         console.log(nTitle, nDesc, nAddress, nCity);
     };
 
