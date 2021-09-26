@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ToastProvider, useToasts } from "react-toast-notifications";
 import { database } from "../../firebase";
 
 import "./VolHealthcare.css"
+import saathi from "../../assets/Saathi.PNG"
 
 const VolHealthcare = () => {
 
@@ -12,6 +13,42 @@ const VolHealthcare = () => {
     const [hAddress, sethAddress] = useState("");
     const [hOrg, sethOrg] = useState("");
     const { addToast } = useToasts();
+
+    const options = {
+        key: 'rzp_test_39mbrnoJ9xzEU1',
+        amount: '1000', //  = INR 1
+        name: 'Saathi',
+        description: 'Even a small amount matters',
+        image: saathi,
+        handler: function (response) {
+            alert(response.razorpay_payment_id);
+        },
+        prefill: {
+            name: 'Saathi',
+            contact: '9999999999',
+            email: 'demo@demo.com'
+        },
+        notes: {
+            address: 'New Delhi'
+        },
+        theme: {
+            color: 'blue',
+            hide_topbar: false
+        }
+    };
+
+    const openPayModal = () => {
+        var rzp1 = new window.Razorpay(options);
+        rzp1.open();
+    };
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        script.async = true;
+        document.body.appendChild(script);
+    }, []);
+
 
     const onClickPost = () => {
         const nTitle = hTitle;
@@ -113,7 +150,7 @@ const VolHealthcare = () => {
                     <p className="hHead">Park Filled with Garbage near Rohini market.</p>
                     <div className="hOrgName">
                         <p>Fund Raiser Stared By:  Vrikshit Foundation Delhi</p>
-                        <p className="donate">Donate ₹</p>
+                        <p className="donate" onClick={openPayModal}>Donate ₹</p>
                     </div>
                     <p className="hDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
 

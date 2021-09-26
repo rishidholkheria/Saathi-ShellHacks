@@ -1,55 +1,59 @@
-.landingPage{
-    width: 100%;
-    height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Lato;
+}
+.landingPage {
+  width: 100%;
+  height: 100vh;
 }
 
-.landingPage img{
-    width: 100%;
-    height: 100%;
+.landingPage img {
+  width: 100%;
+  height: 100%;
 }
 
-.login{
-    display: flex;
-    padding: 20px 50px;
+.login {
+  display: flex;
+  padding: 20px 50px;
 }
 
-.saathiIntro{
-    width: 60%;
-    padding: 20px 10px;
-    margin: 10px;
+.saathiIntro {
+  width: 60%;
+  padding: 20px 10px;
+  margin: 10px;
 }
 
-.loginLogo{
-    font-family: damion;
-    font-size: 1.8rem;
+.loginLogo {
+  font-family: damion;
+  font-size: 1.8rem;
 }
 
-.introData{
-    font-size: 0.9rem;
+.introData {
+  font-size: 0.9rem;
 }
 
-.loginForm{
-    width: 40%;
-    padding: 20px 10px;
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: 2px solid gray;
-    min-height: 400px;
+.loginForm {
+  width: 40%;
+  padding: 20px 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid gray;
+  min-height: 400px;
 }
 
-.loginForm input{
-    width: 80%;
-    padding: 8px;
-    margin: 10px;
+.loginForm input {
+  width: 80%;
+  padding: 8px;
+  margin: 10px;
 }
 
-.loginForm button{
-    width: 50%;
-    margin-top: 20px;
-    padding: 8px;
+.loginForm button {
+  width: 50%;
+  margin-top: 20px;
+  padding: 8px;
 }
-
-

@@ -17,20 +17,29 @@ const VolFoodBooks = () => {
 
     var myData = [];
 
-    useEffect(() => {
-        var temp = database.ref('users/').once("value").then((snapshot) => {
-            snapshot.forEach(function (childSnapshot) {
-                var cdata = childSnapshot.val();
-                myData.push(cdata)
-            });
-        })
+    // useEffect(() => {
+    //     var temp = database.ref('users/').once("value").then((snapshot) => {
+    //         snapshot.forEach(function (childSnapshot) {
+    //             var cdata = childSnapshot.val();
+    //             myData.push(cdata)
+    //         });
+    //     })
 
-        {
+    //     const id = localStorage.getItem("SAATHI_ID")
 
-            myData.filter(per => per.userId === localStorage.getItem("SAATHI_ID")(localStorage.setItem("Utype", per.userType)))
-        }
-        console.log("hiiiiiiiiiii")
-    }, [])
+    //     const newArray = []
+    //     console.log(myData)
+
+    //     for (let i = 0; i < myData.length; i++) {
+    //         var data = myData[i].userId;
+    //         console.log(data)
+    //         // if (myData[i].userId === localStorage.getItem("SAATHI_ID")) {
+    //         //     newArray.push(myData[i].userType);
+    //         // }
+    //     }
+    //     console.log("new array" + newArray)
+    //     console.log("hiiiiiiiiiii")
+    // }, [])
 
     useEffect(() => {
         var temp = database.ref('food_books/').once("value").then((snapshot) => {

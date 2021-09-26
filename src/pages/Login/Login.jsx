@@ -3,6 +3,7 @@ import "./Login.css"
 import little_girl from "../../assets/little_girl.jpg"
 import { auth, provider, database } from "../../firebase";
 import { ToastProvider, useToasts } from "react-toast-notifications";
+import Carousel from "./Carousel"
 
 const Login = () => {
     const [uid, setUid] = useState("");
@@ -34,9 +35,11 @@ const Login = () => {
 
     return (
         <div className="loginPage">
-            <div className="landingPage">
+            {/* <div className="landingPage">
                 <img src={little_girl} alt="Image Carousel" />
-            </div>
+            </div> */}
+            <div><Carousel /></div>
+
 
             <div className="login">
                 <div className="saathiIntro">
