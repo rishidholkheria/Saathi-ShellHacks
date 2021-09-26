@@ -44,7 +44,7 @@ const Volunteer = () => {
 
     return (
         <div className="volunteerPage">
-            <p className="pageHead">Clean India</p>
+            <p className="ciPageHead">Clean India</p>
 
             <div className="addNewLocation">
                 <p>What's in your mind?</p>
@@ -91,12 +91,14 @@ const Volunteer = () => {
                                 value={cIDesc}
                                 onChange={(e) => setCiDesc(e.target.value)}
                             />
+
                             <input
-                                type="input"
+                                type="file"
                                 placeholder="Image of Location"
                                 value={cIImage}
                                 onChange={(e) => setCiImage(e.target.value)}
                             />
+
                             <button className="postLocationBtn" onClick={onClickPost}>Post</button>
                         </div>
 
@@ -128,10 +130,6 @@ const Volunteer = () => {
 
                 <div className="singleLocationDetails">
                     <p className="locDetailHead">Park Filled with Garbage near Rohini market.</p>
-                    {/* <div className="locDateCity">
-                        <p>12 Jan 2021</p>
-                        <p>New Delhi</p>
-                    </div> */}
                     <p className="locDetailDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
                     <p className="locDetailAddress">Address: Block C Market Road 110054</p>
                     <img className="locDetailImg" src={cleanIndiaImg1} alt="Image" />
@@ -141,31 +139,14 @@ const Volunteer = () => {
                         <i class="fas fa-circle-notch fa-lg"></i>
                     </div>
 
-                </div>
-
-                <div className="singleLocationDetails">
-                    <p className="locDetailHead">Park Filled with Garbage near Rohini market.</p>
                     <div className="locDateCity">
                         <p>12 Jan 2021</p>
                         <p>New Delhi</p>
                     </div>
-                    <p className="locDetailDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
-                    <p className="locDetailAddress">Location: Block C Market Road 110054</p>
-                    <img className="locDetailImg" src={cleanIndiaImg1} alt="Image" />
-                    <div className="statusOfLoc">
-                        <p>Status: Pending</p>
-                        <i class="fas fa-circle-notch fa-lg"></i>
-                    </div>
-
-
                 </div>
 
                 <div className="singleLocationDetails">
                     <p className="locDetailHead">Park Filled with Garbage near Rohini market.</p>
-                    <div className="locDateCity">
-                        <p>12 Jan 2021</p>
-                        <p>New Delhi</p>
-                    </div>
                     <p className="locDetailDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
                     <p className="locDetailAddress">Address: Block C Market Road 110054</p>
                     <img className="locDetailImg" src={cleanIndiaImg1} alt="Image" />
@@ -175,7 +156,30 @@ const Volunteer = () => {
                         <i class="fas fa-circle-notch fa-lg"></i>
                     </div>
 
+                    <div className="locDateCity">
+                        <p>12 Jan 2021</p>
+                        <p>New Delhi</p>
+                    </div>
                 </div>
+
+                <div className="singleLocationDetails">
+                    <p className="locDetailHead">Park Filled with Garbage near Rohini market.</p>
+                    <p className="locDetailDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
+                    <p className="locDetailAddress">Address: Block C Market Road 110054</p>
+                    <img className="locDetailImg" src={cleanIndiaImg1} alt="Image" />
+
+                    <div className="statusOfLoc">
+                        <p>Status: Pending</p>
+                        <i class="fas fa-circle-notch fa-lg"></i>
+                    </div>
+
+                    <div className="locDateCity">
+                        <p>12 Jan 2021</p>
+                        <p>New Delhi</p>
+                    </div>
+                </div>
+
+
 
             </div>
 

@@ -1,4 +1,65 @@
 .profileSide{
     width: 20%;
-    /* background-color: yellow; */
+    border-left: 1px solid rgba(85, 85, 85, 0.226);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fa-user-circle{
+    color: #44D3DD;
+}
+
+.userEmail{
+    background-color: white;
+    padding: 10px;
+    margin: 15px;
+    font-family: spartan;
+    font-size: 0.9rem;
+    color: rgb(92, 92, 92);
+    border-radius: 8px;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 3px 0px, rgb(0 0 0 / 6%) 0px 1px 2px 0px;
+}
+
+.userType{
+    padding: 7px 15px;
+    color: #44D3DD;
+    background-color: #DFF9FF;
+    font-family: spartan;
+    font-weight: 700;
+    border-radius: 8px;
+}
+
+.notifications{
+    padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notificationsHead{
+    padding: 10px 0;
+    font-family: spartan;
+}
+
+.singleNotification{
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 3px 0px, rgb(0 0 0 / 6%) 0px 1px 2px 0px;
+    margin-top: 20px;
+}
+
+.singleNotification p{
+    font-size: 0.9rem;
+    padding: 10px;
+    color: rgb(97, 97, 97);
+}
+
+.verify{
+    font-family: spartan;
+    background-color: #44D3DD;
+    text-align: center;
 }
