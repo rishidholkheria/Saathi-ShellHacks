@@ -7,12 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastProvider, useToasts } from "react-toast-notifications";
 
 const Volunteer = () => {
+    var globalImg = {};
     const [cITitle, setCiTitle] = useState("");
     const [cIDesc, setCiDesc] = useState("");
     const [cICity, setCiCity] = useState("");
     const [cIAddress, setCiAddress] = useState("");
     const [cIImageFile, setCiImageFile] = useState("");
-    const [cIImageUrl, setCiImageUrl] = useState({});
 
     const { addToast } = useToasts();
 
@@ -39,7 +39,7 @@ const Volunteer = () => {
                 storage.ref('images').child(cIImageFile.name).getDownloadURL()
                     .then(fireBaseUrl => {
                         // setCiImageUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
-                        setCiImageUrl(fireBaseUrl)
+                        globalImg = fireBaseUrl
                     })
             });
     }
@@ -54,7 +54,6 @@ const Volunteer = () => {
         const date = new Date().toLocaleString() + ""
 
         handleImageUpload();
-        const imageUrl = cIImageUrl;
         database
             .ref("posts")
             .push({
@@ -64,7 +63,7 @@ const Volunteer = () => {
                 city: nCity,
                 uId: id,
                 date: date,
-                imgUrl: imageUrl,
+                imgUrl: globalImg,
                 status: "pending"
             })
             .catch(alert);

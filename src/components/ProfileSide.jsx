@@ -12,7 +12,11 @@ const ProfileSide = () => {
 
     return (
         <div className="profileSide">
-            <i class="fas fa-user-circle fa-5x"></i>
+            {/* <i class="fas fa-user-circle fa-5x"></i> */}
+            <div class="circular_image">
+                <img src={auth.currentUser.photoURL} />
+            </div>
+
             <p className="userEmail">{auth.currentUser.email}</p>
 
             <p className="userType">Volunteer</p>
