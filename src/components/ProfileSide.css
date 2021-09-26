@@ -1,5 +1,6 @@
 .profileSide {
   width: 20%;
+  min-width: 20%;
   border-left: 1px solid rgba(85, 85, 85, 0.226);
   padding: 10px;
   display: flex;
@@ -33,6 +34,7 @@
 }
 
 .notifications {
+  min-width: 100%;
   padding: 40px 10px;
   display: flex;
   flex-direction: column;

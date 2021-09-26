@@ -15,16 +15,40 @@ import Login from './pages/Login/Login';
 import VolFoodBooks from './pages/VolFoodBooks/VolFoodBooks';
 import OrgCleanIndia from './pages/NgoOrg/OrgCleanIndia';
 import VolHealthcare from './pages/VolHealtchcare/VolHealthcare';
+import { database, storage } from "./firebase";
+
 
 
 function App() {
   const [user] = useAuthState(auth);
-  console.log(auth);
+  // console.log(auth);
+
+  var childData = [];
+
+
+  // const UserTypeHandler = () => {
+  //   var temp = database.ref('users/').once("value").then((snapshot) => {
+  //     snapshot.forEach(function (childSnapshot) {
+  //           var cdata = childSnapshot.val();
+  //           childData.push(cdata)
+  //     });
+  //   })
+  //   // childData.filter(type => type.userID === localStorage.getItem("SAATHI_ID")).map(filteredName => (
+  //   //   // localStorage.setItem("Utype", filteredName.userType)
+  //   //   console.log(type.userID)
+  //   // ))
+
+  //   {childData.filter(per => per.userId === localStorage.getItem("SAATHI_ID")).map(filteredPerson => (
+  //     localStorage.setItem("Utype", filteredPerson.userType) 
+  //   ))}
+  //   console.log(childData)
+  //   console.log("hiiiiiiiiiii")
+  // }
 
   if(user){
-  return (
+    return (
     <ToastProvider>
-
+    {/* {UserTypeHandler()} */}
     <Router>
       <Switch>      
         <div className="App">

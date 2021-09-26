@@ -15,6 +15,23 @@ const VolFoodBooks = () => {
 
     var childData = [];
 
+    var myData = [];
+
+    useEffect(() => {
+        var temp = database.ref('users/').once("value").then((snapshot) => {
+            snapshot.forEach(function (childSnapshot) {
+                var cdata = childSnapshot.val();
+                myData.push(cdata)
+            });
+        })
+
+        {
+
+            myData.filter(per => per.userId === localStorage.getItem("SAATHI_ID")(localStorage.setItem("Utype", per.userType)))
+        }
+        console.log("hiiiiiiiiiii")
+    }, [])
+
     useEffect(() => {
         var temp = database.ref('food_books/').once("value").then((snapshot) => {
             snapshot.forEach(function (childSnapshot) {

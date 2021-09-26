@@ -109,6 +109,7 @@ const Volunteer = () => {
         <div className="volunteerPage">
             <p className="ciPageHead">Clean India</p>
 
+
             <div className="addNewLocation">
                 <p>What's on your mind?</p>
 
