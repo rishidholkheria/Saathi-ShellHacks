@@ -1,12 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Login.css"
 import little_girl from "../../assets/little_girl.jpg"
-import { auth, provider } from "../../firebase";
+import { auth, provider, database } from "../../firebase";
+import { ToastProvider, useToasts } from "react-toast-notifications";
 
 const Login = () => {
+    const [uid, setUid] = useState("");
+    const [uName, setUName] = useState("");
+
     const signIn = () => {
-        auth.signInWithPopup(provider).catch(alert);
+        auth.signInWithPopup(provider).then(data => {
+            console.log("User ID :- ", data.user.uid);
+            setUid(data.user.uid);
+            localStorage.setItem("SAATHI_ID", data.user.uid)
+            setUName(data.user.displayName);
+            localStorage.setItem("NAME", data.user.displayName)
+        }).catch(alert);
+
+        var id = localStorage.getItem("SAATHI_ID");
+        var name = localStorage.getItem("NAME");
+
+        database
+            .ref("users")
+            .push({
+                userId: id,
+                userName: name,
+                userType: "Volunteer"
+            })
+            .catch(alert);
     };
+
+
 
     return (
         <div className="loginPage">

@@ -19,6 +19,8 @@ const Volunteer = () => {
         const nDesc = cIDesc;
         const nCity = cICity;
         const nAddress = cIAddress;
+        const id = localStorage.getItem("SAATHI_ID");
+        const date = new Date().toLocaleString() + ""
 
         database
             .ref("posts")
@@ -27,6 +29,8 @@ const Volunteer = () => {
                 desc: nDesc,
                 address: nAddress,
                 city: nCity,
+                uId: id,
+                date: date
             })
             .catch(alert);
         addToast("Post Added!", {
