@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { database, storage } from "../firebase";
 import "./Sidebar.css"
+import { Link } from 'react-router-dom';
+import { SidebarData, SideBarPathIndex } from './SidebarData';
 import Pending from './Pending'
 import Verified from './Verified'
 

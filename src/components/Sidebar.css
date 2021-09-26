@@ -5,16 +5,28 @@
     border-right: 1px solid rgba(85, 85, 85, 0.226);
 }
 
-.introColumnContent{
+.sidebarOption{
     padding: 10px;
     margin-top: 20px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    color: darkgreen;
     font-family: spartan;
+    text-decoration: none;
 }
 
-.introColumnContent:hover{
+.sidebarOption:hover{
     background-color: white;
     border-left: 3px solid green;
+    text-decoration: none;
+
+}
+
+.sidebarOption.active{
+    background-color: white;
+    border-left: 3px solid #18858d;
+    background-color: #57c1c9;
+    color: white;
+    text-decoration: none;
 }
 
 /* Work */
@@ -58,4 +70,8 @@
     border-left: 5px solid blueviolet;
     color: blueviolet;
     font-weight: 700;
+}
+
+.sidebar_option{
+    
 }
