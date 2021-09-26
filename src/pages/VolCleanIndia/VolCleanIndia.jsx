@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./VolCleanIndia.css"
 import cleanIndiaImg1 from "../../assets/cleanIndiaImg1.jpg"
-import { database } from "../../firebase";
+import { database, storage } from "../../firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastProvider, useToasts } from "react-toast-notifications";
@@ -11,8 +11,39 @@ const Volunteer = () => {
     const [cIDesc, setCiDesc] = useState("");
     const [cICity, setCiCity] = useState("");
     const [cIAddress, setCiAddress] = useState("");
-    const [cIImage, setCiImage] = useState(null);
+    const [cIImageFile, setCiImageFile] = useState("");
+    const [cIImageUrl, setCiImageUrl] = useState({});
+
     const { addToast } = useToasts();
+
+    console.log(cIImageFile)
+    const handleImageAsFile = (e) => {
+        const image = e.target.files[0]
+        setCiImageFile(imageFile => (image))
+    }
+
+    const handleImageUpload = () => {
+        //error handling
+        if (cIImageFile === '') {
+            console.log(`not an image, the image file is a ${typeof (cIImageFile)}`)
+        }
+
+        const uploadImage = storage.ref(`/images/${cIImageFile.name}`).put(cIImageFile);
+
+        uploadImage.on('state_changed',
+            (snapShot) => {
+                console.log(snapShot)
+            }, (err) => {
+                console.log(err)
+            }, () => {
+                storage.ref('images').child(cIImageFile.name).getDownloadURL()
+                    .then(fireBaseUrl => {
+                        // setCiImageUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
+                        setCiImageUrl(fireBaseUrl)
+                    })
+            });
+    }
+
 
     const onClickPost = () => {
         const nTitle = cITitle;
@@ -22,6 +53,8 @@ const Volunteer = () => {
         const id = localStorage.getItem("SAATHI_ID");
         const date = new Date().toLocaleString() + ""
 
+        handleImageUpload();
+        const imageUrl = cIImageUrl;
         database
             .ref("posts")
             .push({
@@ -30,7 +63,9 @@ const Volunteer = () => {
                 address: nAddress,
                 city: nCity,
                 uId: id,
-                date: date
+                date: date,
+                imgUrl: imageUrl,
+                status: "pending"
             })
             .catch(alert);
         addToast("Post Added!", {
@@ -41,7 +76,7 @@ const Volunteer = () => {
         setCiDesc("")
         setCiTitle("")
         setCiCity("")
-        setCiImage("")
+        setCiImageFile("")
         console.log(nTitle, nDesc, nAddress, nCity);
     };
 
@@ -51,7 +86,7 @@ const Volunteer = () => {
             <p className="ciPageHead">Clean India</p>
 
             <div className="addNewLocation">
-                <p>What's in your mind?</p>
+                <p>What's on your mind?</p>
 
                 <div className="ciInputWrapper">
 
@@ -99,8 +134,7 @@ const Volunteer = () => {
                             <input
                                 type="file"
                                 placeholder="Image of Location"
-                                value={cIImage}
-                                onChange={(e) => setCiImage(e.target.value)}
+                                onChange={handleImageAsFile}
                             />
 
                             <button className="postLocationBtn" onClick={onClickPost}>Post</button>
