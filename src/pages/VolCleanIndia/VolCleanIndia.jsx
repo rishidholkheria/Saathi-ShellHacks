@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./VolCleanIndia.css"
-import cleanIndiaImg1 from "../../assets/cleanIndiaImg1.jpg"
 import { database, storage } from "../../firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastProvider, useToasts } from "react-toast-notifications";
+import SingleCiPost from './SingleCiPost';
 
 const Volunteer = () => {
     var globalImg = {};
@@ -13,10 +13,35 @@ const Volunteer = () => {
     const [cICity, setCiCity] = useState("");
     const [cIAddress, setCiAddress] = useState("");
     const [cIImageFile, setCiImageFile] = useState("");
+    const [posts, setPosts] = useState([]);
+    const [img, setImg] = useState({});
 
     const { addToast } = useToasts();
 
-    console.log(cIImageFile)
+    var childData = [];
+
+    useEffect(() => {
+        var temp = database.ref('posts/').once("value").then((snapshot) => {
+            // const data = snapshot.val();
+            // console.log(data)
+            // setPosts(temp)
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var cdata = childSnapshot.val();
+                childData.push(cdata)
+            });
+            console.log(childData)
+            setPosts(childData)
+        })
+    }, [])
+
+
+
+    // setMyData(temp)
+    // console.log(mydata)
+
+
+    // console.log(cIImageFile)
     const handleImageAsFile = (e) => {
         const image = e.target.files[0]
         setCiImageFile(imageFile => (image))
@@ -40,6 +65,7 @@ const Volunteer = () => {
                     .then(fireBaseUrl => {
                         // setCiImageUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
                         globalImg = fireBaseUrl
+                        localStorage.setItem("Image", fireBaseUrl) // Temporary solution
                     })
             });
     }
@@ -54,6 +80,9 @@ const Volunteer = () => {
         const date = new Date().toLocaleString() + ""
 
         handleImageUpload();
+        console.log(globalImg)
+        console.log(img)
+        console.log("hiiiii")
         database
             .ref("posts")
             .push({
@@ -63,7 +92,7 @@ const Volunteer = () => {
                 city: nCity,
                 uId: id,
                 date: date,
-                imgUrl: globalImg,
+                imgUrl: localStorage.getItem("Image"),
                 status: "pending"
             })
             .catch(alert);
@@ -76,7 +105,7 @@ const Volunteer = () => {
         setCiTitle("")
         setCiCity("")
         setCiImageFile("")
-        console.log(nTitle, nDesc, nAddress, nCity);
+        // console.log(nTitle, nDesc, nAddress, nCity);
     };
 
 
@@ -148,75 +177,20 @@ const Volunteer = () => {
             </div>
 
             <div className="locationsList">
-                <div className="singleLocationDetails">
-                    <p className="locDetailHead">Park Filled with Garbage near Rohini market.</p>
-                    <p className="locDetailDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
-                    <p className="locDetailAddress">Address: Block C Market Road 110054</p>
-                    <img className="locDetailImg" src={cleanIndiaImg1} alt="Image" />
-
-                    <div className="statusOfLoc">
-                        <p>Status: Pending</p>
-                        <i class="fas fa-circle-notch fa-lg"></i>
-                    </div>
-
-                    <div className="locDateCity">
-                        <p>12 Jan 2021</p>
-                        <p>New Delhi</p>
-                    </div>
-                </div>
-
-                <div className="singleLocationDetails">
-                    <p className="locDetailHead">Park Filled with Garbage near Rohini market.</p>
-                    <p className="locDetailDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
-                    <p className="locDetailAddress">Address: Block C Market Road 110054</p>
-                    <img className="locDetailImg" src={cleanIndiaImg1} alt="Image" />
-
-                    <div className="statusOfLoc">
-                        <p>Status: Pending</p>
-                        <i class="fas fa-circle-notch fa-lg"></i>
-                    </div>
-
-                    <div className="locDateCity">
-                        <p>12 Jan 2021</p>
-                        <p>New Delhi</p>
-                    </div>
-                </div>
-
-                <div className="singleLocationDetails">
-                    <p className="locDetailHead">Park Filled with Garbage near Rohini market.</p>
-                    <p className="locDetailDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
-                    <p className="locDetailAddress">Address: Block C Market Road 110054</p>
-                    <img className="locDetailImg" src={cleanIndiaImg1} alt="Image" />
-
-                    <div className="statusOfLoc">
-                        <p>Status: Pending</p>
-                        <i class="fas fa-circle-notch fa-lg"></i>
-                    </div>
-
-                    <div className="locDateCity">
-                        <p>12 Jan 2021</p>
-                        <p>New Delhi</p>
-                    </div>
-                </div>
-
-                <div className="singleLocationDetails">
-                    <p className="locDetailHead">Park Filled with Garbage near Rohini market.</p>
-                    <p className="locDetailDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
-                    <p className="locDetailAddress">Address: Block C Market Road 110054</p>
-                    <img className="locDetailImg" src={cleanIndiaImg1} alt="Image" />
-
-                    <div className="statusOfLoc">
-                        <p>Status: Pending</p>
-                        <i class="fas fa-circle-notch fa-lg"></i>
-                    </div>
-
-                    <div className="locDateCity">
-                        <p>12 Jan 2021</p>
-                        <p>New Delhi</p>
-                    </div>
-                </div>
-
-
+                {/* {console.log(posts)} */}
+                {
+                    [...posts]
+                        .map((post) => (
+                            <SingleCiPost
+                                title={post.title}
+                                description={post.desc}
+                                address={post.address}
+                                imageUrl={post.imgUrl}
+                                city={post.city}
+                                date={post.date}
+                            />
+                        ))
+                }
 
             </div>
 
