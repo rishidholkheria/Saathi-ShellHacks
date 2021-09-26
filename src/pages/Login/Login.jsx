@@ -1,8 +1,13 @@
 import React from 'react'
 import "./Login.css"
 import little_girl from "../../assets/little_girl.jpg"
+import { auth, provider } from "../../firebase";
 
 const Login = () => {
+    const signIn = () => {
+        auth.signInWithPopup(provider).catch(alert);
+    };
+
     return (
         <div className="loginPage">
             <div className="landingPage">
@@ -22,7 +27,7 @@ const Login = () => {
                     <p>Don't have an account? Register here</p>
 
                     <p>OR</p>
-                    <button className="googeleSignin">Login/Signup with Google</button>
+                    <button className="googeleSignin" onClick={signIn}>Login/Signup with Google</button>
                 </div>
 
             </div>

@@ -1,13 +1,24 @@
 import React from 'react'
 import "./ProfileSide.css"
+import { auth } from "../firebase";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const ProfileSide = () => {
+
+    const logout = () => {
+        auth.signOut();
+    };
+
+
     return (
         <div className="profileSide">
             <i class="fas fa-user-circle fa-5x"></i>
-            <p className="userEmail">rishidholkheria@gmail.com</p>
-            <p className="userType">Volunteer</p>
+            <p className="userEmail">{auth.currentUser.email}</p>
 
+            <p className="userType">Volunteer</p>
+            <button onClick={logout}>
+                Logout
+            </button>
             <div className="notifications">
                 <p className="notificationsHead">Notifications</p>
                 <div className="singleNotification">

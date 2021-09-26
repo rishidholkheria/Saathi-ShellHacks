@@ -1,0 +1,32 @@
+.fbPageHead{
+    font-family: spartan;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 15px;
+    border-bottom: 5px solid rgb(255, 75, 75);
+}
+
+.fbPosts{
+    width: 90%;
+    margin: 30px 0;
+    padding: 10px;
+}
+
+.fbHead{
+    font-family: spartan;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 10px 0;
+}
+
+.fbOrgName{
+    background-color: #ffeaed;
+    color: #ff99a8 ;
+    /* background-color: #c5eefc; */
+    /* color: rgb(36, 36, 247); */
+    font-family: spartan;
+    font-size: 0.8rem;
+    padding: 10px;
+    border-radius: 5px;
+    /* border: 1px solid rgb(122, 122, 248); */
+}
