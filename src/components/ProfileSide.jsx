@@ -35,7 +35,7 @@ const ProfileSide = () => {
             <p className="userEmail">{auth.currentUser.email}</p>
 
             <p className="userType">Volunteer</p>
-            <button onClick={logout}>
+            <button className="logoutBtn" onClick={logout}>
                 Logout
             </button>
             <div className="notifications">

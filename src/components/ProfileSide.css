@@ -78,3 +78,13 @@
 .circular_image img {
   width: 100%;
 }
+
+.logoutBtn{
+  width: 90%;
+  margin-top: 30px;
+  padding: 7px;
+  background-color: #78e6ee;
+  border: none;
+  font-family: spartan;
+  color: rgb(13, 139, 139);
+}
