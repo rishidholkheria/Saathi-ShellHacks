@@ -7,7 +7,7 @@ import Verified from './Verified'
 
 const Sidebar = () => {
     const [posts, setPosts] = useState([]);
-
+    const [selectedOption, setSelectedOption] = React.useState(SideBarPathIndex[window.location.pathname]);
     var childData = [];
 
     useEffect(() => {
@@ -25,11 +25,18 @@ const Sidebar = () => {
     return (
         <div className="sidebar">
 
-            <div className="introColumn">
-                <p className="introColumnContent">NGOs</p>
-                <p className="introColumnContent">Govt Organisations</p>
-                <p className="introColumnContent">About Saathi</p>
-            </div>
+            {SidebarData.map((item, index) => {
+                return (<div className="introColumn">
+                    <Link key={index} to={item.path} onClick={() => {
+                        setSelectedOption(index);
+                    }}>
+                        <div className={selectedOption === index ? item.cName + ' active' : item.cName}>
+                            {/* <i className={item.icon} id="option_icon"></i> */}
+                            <p>{item.option_name}</p>
+                        </div>
+                    </Link>
+                </div>)
+            })}
 
             <div className="work">
                 <p className="workStatusHead">Pending Work</p>
