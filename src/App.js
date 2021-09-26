@@ -14,6 +14,7 @@ import { ToastProvider, useToasts } from 'react-toast-notifications';
 import Login from './pages/Login/Login';
 import VolFoodBooks from './pages/VolFoodBooks/VolFoodBooks';
 import OrgCleanIndia from './pages/NgoOrg/OrgCleanIndia';
+import VolHealthcare from './pages/VolHealtchcare/VolHealthcare';
 
 
 function App() {
@@ -31,9 +32,10 @@ function App() {
           <div className="app_body">
             <Sidebar/>
             <div className="body_conent">
+              {/* <Route path="/org-clean-india" exact={true} component={OrgCleanIndia}></Route> */}
               <Route path="/food-books" exact={true} component={VolFoodBooks}></Route>
+              <Route path="/healthcare" exact={true} component={VolHealthcare}></Route>
               <Route path="/" exact={true} component={Volunteer}></Route>
-              <Route path="/org-clean-india" exact={true} component={OrgCleanIndia}></Route>
             </div>
               <ProfileSide/>
           </div>

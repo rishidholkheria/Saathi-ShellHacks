@@ -1,0 +1,72 @@
+.healthPageHead{
+    font-family: spartan;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 15px;
+  border-bottom: 5px solid rgb(223, 137, 25);
+}
+
+.healthPosts {
+    width: 90%;
+    margin: 30px 0;
+    padding: 10px;
+}
+
+.singleHealthPost {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.hHead {
+    font-family: spartan;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 10px 0;
+  }
+  
+  .hOrgName {
+    background-color: rgb(247, 228, 201);
+    color: rgb(209, 84, 12);
+    font-family: spartan;
+    font-size: 0.8rem;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .hDesc {
+    font-size: 0.9rem;
+    padding: 10px 2px;
+    color: rgb(37, 37, 37);
+  }
+  
+  .hAddressInterest {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  
+  .hAddressInterest div {
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+    /* align-items: center; */
+  }
+  
+  .hAddressInterest p {
+    color: rgb(94, 93, 93);
+    font-size: 0.87rem;
+    font-family: spartan;
+    text-align: center;
+  }
+
+  .donate{
+    font-family: spartan;
+    text-decoration: underline;
+    color: red;
+    padding: 3px 5px;
+  }
+  
