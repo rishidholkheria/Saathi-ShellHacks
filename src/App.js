@@ -13,6 +13,7 @@ import ProfileSide from './components/ProfileSide';
 import { ToastProvider, useToasts } from 'react-toast-notifications';
 import Login from './pages/Login/Login';
 import VolFoodBooks from './pages/VolFoodBooks/VolFoodBooks';
+import OrgCleanIndia from './pages/NgoOrg/OrgCleanIndia';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <div className="body_conent">
               <Route path="/food-books" exact={true} component={VolFoodBooks}></Route>
               <Route path="/" exact={true} component={Volunteer}></Route>
+              <Route path="/org-clean-india" exact={true} component={OrgCleanIndia}></Route>
             </div>
               <ProfileSide/>
           </div>

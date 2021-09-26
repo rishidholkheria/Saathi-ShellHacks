@@ -3,13 +3,20 @@
     font-size: 1.5rem;
     font-weight: 600;
     padding: 15px;
-    border-bottom: 5px solid rgb(255, 75, 75);
+    border-bottom: 5px solid rgb(55, 173, 26);
 }
 
 .fbPosts{
     width: 90%;
     margin: 30px 0;
     padding: 10px;
+}
+
+.singleFbPost{
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
 }
 
 .fbHead{
@@ -20,8 +27,8 @@
 }
 
 .fbOrgName{
-    background-color: #ffeaed;
-    color: #ff99a8 ;
+    background-color: rgb(191, 245, 178);
+    color: darkgreen;
     /* background-color: #c5eefc; */
     /* color: rgb(36, 36, 247); */
     font-family: spartan;
@@ -29,4 +36,34 @@
     padding: 10px;
     border-radius: 5px;
     /* border: 1px solid rgb(122, 122, 248); */
+}
+
+.fbDesc{
+    font-size: 0.9rem;
+    padding: 10px 2px;
+    color: rgb(37, 37, 37);
+}
+
+.fbAddressInterest{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.fbAddressInterest div{
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+    /* align-items: center; */
+}
+
+.fbAddressInterest p{
+    color: rgb(94, 93, 93);
+    font-size: 0.87rem;
+    font-family: spartan;
+    text-align: center;
+}
+
+.fa-star{
+    color: darkgreen;
 }
