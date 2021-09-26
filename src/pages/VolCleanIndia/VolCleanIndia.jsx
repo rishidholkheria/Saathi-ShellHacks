@@ -80,9 +80,6 @@ const Volunteer = () => {
         const date = new Date().toLocaleString() + ""
 
         handleImageUpload();
-        console.log(globalImg)
-        console.log(img)
-        console.log("hiiiii")
         database
             .ref("posts")
             .push({
@@ -105,7 +102,6 @@ const Volunteer = () => {
         setCiTitle("")
         setCiCity("")
         setCiImageFile("")
-        // console.log(nTitle, nDesc, nAddress, nCity);
     };
 
 

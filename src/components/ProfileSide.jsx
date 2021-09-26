@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import "./ProfileSide.css"
-import { auth } from "../firebase";
+import { auth, database, storage } from "../firebase";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ToVerify from './ToVerify';
 
 const ProfileSide = () => {
+    const [posts, setPosts] = useState([]);
 
     const logout = () => {
         auth.signOut();
     };
 
+    var childData = [];
+
+    useEffect(() => {
+        var temp = database.ref('posts/').once("value").then((snapshot) => {
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var cdata = childSnapshot.val();
+                childData.push(cdata)
+            });
+            console.log(childData)
+            setPosts(childData)
+        })
+    }, [])
 
     return (
         <div className="profileSide">
@@ -26,16 +41,16 @@ const ProfileSide = () => {
             <div className="notifications">
                 <p className="notificationsHead">Notifications</p>
                 <div className="singleNotification">
-                    <p>Park Filled with Garbage near Rohini market.</p>
-                    <p className="verify">Verify</p>
-                </div>
-                <div className="singleNotification">
-                    <p>Park Filled with Garbage near Rohini market.</p>
-                    <p className="verify">Verify</p>
-                </div>
-                <div className="singleNotification">
-                    <p>Park Filled with Garbage near Rohini market.</p>
-                    <p className="verify">Verify</p>
+                    {
+                        [...posts].filter(post => post.status === "completed")
+                            .map((post) => {
+                                { console.log(post.title) }
+                                return (
+                                    <ToVerify
+                                        toBeVerified={post.title} />
+                                );
+                            })
+                    }
                 </div>
             </div>
 

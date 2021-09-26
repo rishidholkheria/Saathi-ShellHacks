@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ToastProvider, useToasts } from "react-toast-notifications";
 import { database } from "../../firebase";
 import "./VolFoodBooks.css"
+import SingleFbPost from "./SingleFbPost";
 
 const VolFoodBooks = () => {
     const [fbTitle, setFbTitle] = useState("");
@@ -9,7 +10,23 @@ const VolFoodBooks = () => {
     const [fbCity, setFbCity] = useState("");
     const [fbAddress, setFbAddress] = useState("");
     const [fbOrg, setFbOrg] = useState("");
+    const [fbPosts, setFbPosts] = useState([]);
     const { addToast } = useToasts();
+
+    var childData = [];
+
+    useEffect(() => {
+        var temp = database.ref('food_books/').once("value").then((snapshot) => {
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var cdata = childSnapshot.val();
+                childData.push(cdata)
+            });
+            console.log(childData)
+            setFbPosts(childData)
+        })
+    }, [])
+
 
     const onClickPost = () => {
         const nTitle = fbTitle;
@@ -110,67 +127,21 @@ const VolFoodBooks = () => {
                 <div>
                 </div>
             </div>
-            <div className="fbPosts">
-
-                <div className="singleFbPost">
-                    <p className="fbHead">Park Filled with Garbage near Rohini market.</p>
-                    <p className="fbOrgName">Organised By:  Vrikshit Foundation Delhi</p>
-                    <p className="fbDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
-
-                    <div className="fbAddressInterest">
-                        <p className="fbAddress">Address: Block C Market Road 110054</p>
-                        <div>
-                            <i class="far fa-star fa-lg"></i>
-                            <p>100 people interested</p>
-                        </div>
-
-                    </div>
-
-                    <div className="locDateCity">
-                        <p>12 Jan 2021</p>
-                        <p>New Delhi</p>
-                    </div>
-                </div>
-
-                <div className="singleFbPost">
-                    <p className="fbHead">Park Filled with Garbage near Rohini market.</p>
-                    <p className="fbOrgName">Organised By:  Vrikshit Foundation Delhi</p>
-                    <p className="fbDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
-
-                    <div className="fbAddressInterest">
-                        <p className="fbAddress">Address: Block C Market Road 110054</p>
-                        <div>
-                            <i class="far fa-star fa-lg"></i>
-                            <p>100 people interested</p>
-                        </div>
-
-                    </div>
-
-                    <div className="locDateCity">
-                        <p>12 Jan 2021</p>
-                        <p>New Delhi</p>
-                    </div>
-                </div>
-
-                <div className="singleFbPost">
-                    <p className="fbHead">Park Filled with Garbage near Rohini market.</p>
-                    <p className="fbOrgName">Organised By:  Vrikshit Foundation Delhi</p>
-                    <p className="fbDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quibusdam vel asperiores illum dolorem sunt beatae atque esse aliquid possimus totam, quam, numquam aliquam quos earum voluptate dolor ipsa velit?</p>
-
-                    <div className="fbAddressInterest">
-                        <p className="fbAddress">Address: Block C Market Road 110054</p>
-                        <div>
-                            <i class="far fa-star fa-lg"></i>
-                            <p>100 people interested</p>
-                        </div>
-
-                    </div>
-
-                    <div className="locDateCity">
-                        <p>12 Jan 2021</p>
-                        <p>New Delhi</p>
-                    </div>
-                </div>
+            <div className="locationsList">
+                {/* {console.log(posts)} */}
+                {
+                    [...fbPosts]
+                        .map((post) => (
+                            <SingleFbPost
+                                title={post.title}
+                                description={post.desc}
+                                address={post.address}
+                                imageUrl={post.imgUrl}
+                                city={post.city}
+                                date={post.date}
+                            />
+                        ))
+                }
 
             </div>
         </div>
